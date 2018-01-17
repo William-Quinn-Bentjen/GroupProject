@@ -7,6 +7,9 @@ public class ReloadAnimationUI : MonoBehaviour {
     //getting tired (sorry for names)
     public Slider ReloadBar;
     public float Duration = 1;
+    public Image readyImage;
+    public Image fill;
+    public Image background;
     //private
     private float currentTime;
     private bool lerping = false;
@@ -23,7 +26,7 @@ public class ReloadAnimationUI : MonoBehaviour {
             if (currentTime >= Duration)
             {
                 lerping = false;
-                ReloadBar.value = ReloadBar.maxValue;
+                Fill();
             }
             else
             {
@@ -34,6 +37,7 @@ public class ReloadAnimationUI : MonoBehaviour {
     //start reload animation with specified duratuion set to 0/leave to use the duration that we currently have
     public void StartLerp(float duration = 0)
     {
+        Empty();
         if (duration > 0)
         {
             Duration = duration;
@@ -42,6 +46,17 @@ public class ReloadAnimationUI : MonoBehaviour {
         ReloadBar.value = ReloadBar.minValue;
         lerping = true;
     }
-    public void 
+    private void Empty()
+    {
+        readyImage.enabled = false;
+        fill.enabled = true;
+        background.enabled = true;
+    }
+    private void Fill()
+    {
+        readyImage.enabled = true;
+        fill.enabled = false;
+        background.enabled = false;
+    }
     
 }
