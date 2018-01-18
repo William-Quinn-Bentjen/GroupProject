@@ -7,15 +7,36 @@ public class ReloadAnimationUI : MonoBehaviour {
     //getting tired (sorry for names)
     public Slider ReloadBar;
     public float Duration = 1;
-    public Image readyImage;
-    public Image fill;
-    public Image background;
+    private Image readyImage;
+    private Image fill;
+    private Image background;
     //private
     private float currentTime;
     private bool lerping = false;
 	// Use this for initialization
 	void Start () {
-        StartLerp();
+        
+        foreach (Transform child in gameObject.transform)
+        {
+            if (child.name == "Background")
+            {
+                background = child.GetComponent<Image>();
+            }
+            else if (child.name == "Fill Area")
+            {
+                foreach (Transform childFill in child)
+                {
+                    if (childFill.name == "Fill")
+                    {
+                        fill = childFill.GetComponent<Image>();
+                    }
+                }
+            }
+            else if (child.name == "ReadyImage")
+            {
+                readyImage = child.GetComponent<Image>();
+            }
+        }
 	}
 	
 	// Update is called once per frame
@@ -37,14 +58,17 @@ public class ReloadAnimationUI : MonoBehaviour {
     //start reload animation with specified duratuion set to 0/leave to use the duration that we currently have
     public void StartLerp(float duration = 0)
     {
-        Empty();
-        if (duration > 0)
+        if (lerping == false)
         {
-            Duration = duration;
+            Empty();
+            if (duration > 0)
+            {
+                Duration = duration;
+            }
+            currentTime = 0;
+            ReloadBar.value = ReloadBar.minValue;
+            lerping = true;
         }
-        currentTime = 0;
-        ReloadBar.value = ReloadBar.minValue;
-        lerping = true;
     }
     private void Empty()
     {
