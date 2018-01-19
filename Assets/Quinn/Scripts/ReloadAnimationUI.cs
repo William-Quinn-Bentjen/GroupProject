@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class ReloadAnimationUI : MonoBehaviour {
     //getting tired (sorry for names)
     public Slider ReloadBar;
+    //replace with gun later and change to private
     public float Duration = 1;
     private Image readyImage;
     private Image fill;
     private Image background;
+    private Text totalAmmo;
+    private Text magAmmo;
     //private
     private float currentTime;
     private bool lerping = false;
@@ -36,6 +39,14 @@ public class ReloadAnimationUI : MonoBehaviour {
             {
                 readyImage = child.GetComponent<Image>();
             }
+            else if (child.name == "TotalAmmo")
+            {
+                totalAmmo = child.GetComponent<Text>();
+            }
+            else if (child.name == "MagAmmo")
+            {
+                magAmmo = child.GetComponent<Text>();
+            }
         }
 	}
 	
@@ -55,6 +66,11 @@ public class ReloadAnimationUI : MonoBehaviour {
             }
         }
 	}
+    public void RefreshGunInfo()
+    {
+        //magAmmo = gun.magcount + "/" + gun.magmaxcount;
+        //totalAmmo
+    }
     //start reload animation with specified duratuion set to 0/leave to use the duration that we currently have
     public void StartLerp(float duration = 0)
     {

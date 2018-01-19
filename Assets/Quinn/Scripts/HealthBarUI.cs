@@ -1,17 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
+public enum HPDisplayTypeBehavior
+{
+    BarText,
+    ValueBarText,
+    ValueBarTextBarMaxValue,
+    ValueAsPercent
+}
 public class HealthBarUI : MonoBehaviour {
     public Slider Bar;
+    public HPDisplayTypeBehavior HPDisplayType;
+    public string PrefixText = "";
     public string BarText = "Default";
+    public string SuffixText = "";
+    [System.Serializable]
+    public class MyEvent : UnityEvent { }
+
+    public MyEvent OnEmpty;
+    public MyEvent OnFull;
 
     //private
     private Image FullImage;
     private Image fill;
     private Image background;
     private bool full;
+    private bool barText;
+    private bool fullImage;
+    private Text TextBar;
+
     // Use this for initialization
     void Start () {
         foreach (Transform child in Bar.transform)
@@ -36,7 +56,8 @@ public class HealthBarUI : MonoBehaviour {
             }
             if (child.name == "Text")
             {
-                child.GetComponent<Text>().text = BarText;
+                TextBar = child.GetComponent<Text>();
+                DisplayHp();
             }
         }
         FullCheck();
@@ -46,11 +67,30 @@ public class HealthBarUI : MonoBehaviour {
 	void Update () {
 		
 	}
-
+    private void DisplayHp()
+    {
+        
+        if (HPDisplayType == HPDisplayTypeBehavior.BarText)
+        {
+            TextBar.text = BarText;
+        }
+        else if (HPDisplayType == HPDisplayTypeBehavior.ValueBarText)
+        {
+            TextBar.text = Bar.value + BarText;
+        }
+        else if (HPDisplayType == HPDisplayTypeBehavior.ValueBarTextBarMaxValue)
+        {
+            TextBar.text = Bar.value + BarText + Bar.maxValue;
+        }
+        else if (HPDisplayType == HPDisplayTypeBehavior.ValueAsPercent)
+        {
+            TextBar.text = (Bar.value/Bar.maxValue*100).ToString();
+        }
+        TextBar.text = PrefixText + TextBar.text + SuffixText;
+    }
     // a function that may be called after changing bar values
     public void FullCheck()
     {
-        Debug.Log("check happened");
         if (Bar.value >= Bar.maxValue)
         {
             full = true;
@@ -66,29 +106,40 @@ public class HealthBarUI : MonoBehaviour {
                 fill.GetComponent<CanvasRenderer>().SetAlpha(1);
                 background.GetComponent<CanvasRenderer>().SetAlpha(1);
             }
+            if (Bar.value <= Bar.minValue)
+            {
+                fill.GetComponent<CanvasRenderer>().SetAlpha(0);
+            }
+            else if (fill.GetComponent<CanvasRenderer>().GetAlpha() == 0)
+            {
+                fill.GetComponent<CanvasRenderer>().SetAlpha(1);
+            }
             full = false;
         }
+        DisplayHp();
     }
-    public float GetValue()
+    //sets value of bar
+    public void SetValue(float newValue)
     {
-        return Bar.value;
-    }
-    public void SetValue(float value)
-    {
-        if (Bar.maxValue>= value && Bar.minValue <= value)
+        if (newValue >= Bar.maxValue)
         {
-            Debug.Log("i happened");
-            Bar.value = value;
-            FullCheck();
+            Bar.value = Bar.maxValue;
+            OnFull.Invoke();
         }
+        else if (newValue <= Bar.minValue)
+        {
+            Bar.value = Bar.minValue;
+            OnEmpty.Invoke();
+        }
+        else
+        {
+            Bar.value = newValue;
+        }
+        FullCheck();
     }
+    //increment value 
     public void IncrementValue(float value)
     {
-        if (Bar.maxValue >= value && Bar.minValue <= value)
-        {
-            Debug.Log("i happened");
-            Bar.value = value;
-            FullCheck();
-        }
+        SetValue(Bar.value + value);
     }
 }
