@@ -363,6 +363,89 @@ MonoBehaviour:
   ReloadBar: {fileID: 8324277}
   TotalAmmo: 0
   Duration: 5
+--- !u!1001 &26981416
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1935277444}
+    m_Modifications:
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.9968672
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.2706395
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -4.470851
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &26981417 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114603994111480756, guid: 7884e9947a5aa0242bd27f8292f9165e,
+    type: 2}
+  m_PrefabInternal: {fileID: 26981416}
+  m_Script: {fileID: 11500000, guid: 27733ac4b287f924499bf420fcd1ff35, type: 3}
+--- !u!1 &26981418 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1971303556433150, guid: 7884e9947a5aa0242bd27f8292f9165e,
+    type: 2}
+  m_PrefabInternal: {fileID: 26981416}
+--- !u!4 &26981419 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e,
+    type: 2}
+  m_PrefabInternal: {fileID: 26981416}
+--- !u!114 &26981420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 26981418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de983bc5a854704689ca55705166ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hitbox: {fileID: 26981417}
+  Working: 1
+  HealthPoints: 100
+  MaxHealthPoints: 100
+  OnHPChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ShipComponent+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnComponentDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ShipComponent+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1001 &137443595
 Prefab:
   m_ObjectHideFlags: 0
@@ -1034,6 +1117,93 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &363112666
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1935277444}
+    m_Modifications:
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.9968672
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.2706395
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -4.470851
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971303556433150, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_Name
+      value: TriggerZone (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &363112667 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114603994111480756, guid: 7884e9947a5aa0242bd27f8292f9165e,
+    type: 2}
+  m_PrefabInternal: {fileID: 363112666}
+  m_Script: {fileID: 11500000, guid: 27733ac4b287f924499bf420fcd1ff35, type: 3}
+--- !u!1 &363112668 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1971303556433150, guid: 7884e9947a5aa0242bd27f8292f9165e,
+    type: 2}
+  m_PrefabInternal: {fileID: 363112666}
+--- !u!4 &363112669 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e,
+    type: 2}
+  m_PrefabInternal: {fileID: 363112666}
+--- !u!114 &363112670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 363112668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de983bc5a854704689ca55705166ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hitbox: {fileID: 363112667}
+  Working: 1
+  HealthPoints: 100
+  MaxHealthPoints: 100
+  OnHPChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ShipComponent+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnComponentDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ShipComponent+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &377209766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,9 +1360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f668406ea50ae54db67bdd3691d5a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MachineGun: {fileID: 0}
-  RailGun: {fileID: 0}
-  MissileLauncher: {fileID: 0}
+  PlayerShip: {fileID: 0}
   SelectMachineGun: {fileID: 1456448704}
   SelectRailGun: {fileID: 0}
   SelectMissileLauncher: {fileID: 0}
@@ -1411,6 +1579,77 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &436332654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 436332656}
+  - component: {fileID: 436332655}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &436332655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 436332654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3340f7ec47bd8a4b94bbb8018fdfe86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InMag: 5
+  MaxInMag: 5
+  AmmoReserve: 50
+  InfiniteAmmoReserve: 0
+  MaxAmmoReserve: 50
+  ReloadTime: 5
+  FireRPM: 60
+  Projectile: {fileID: 0}
+  HitType: 0
+  TriggerZoneDamage: 0
+  ProjectileSpeed: 0
+  OnFire:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnEmptyMag:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnDryFire:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnReloadStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnReloadComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!4 &436332656
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 436332654}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1935277444}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &457177872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,6 +1968,77 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &718496140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 718496142}
+  - component: {fileID: 718496141}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &718496141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 718496140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3340f7ec47bd8a4b94bbb8018fdfe86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InMag: 5
+  MaxInMag: 5
+  AmmoReserve: 50
+  InfiniteAmmoReserve: 0
+  MaxAmmoReserve: 50
+  ReloadTime: 5
+  FireRPM: 60
+  Projectile: {fileID: 0}
+  HitType: 0
+  TriggerZoneDamage: 0
+  ProjectileSpeed: 0
+  OnFire:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnEmptyMag:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnDryFire:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnReloadStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnReloadComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!4 &718496142
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 718496140}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1935277444}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &728025112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,7 +2485,7 @@ RectTransform:
   - {fileID: 1543582413}
   - {fileID: 1704993859}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2558,7 +2868,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3858,6 +4168,220 @@ RectTransform:
   m_AnchoredPosition: {x: -260, y: 95.3}
   m_SizeDelta: {x: 250, y: 120}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!1001 &1872806445
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1935277444}
+    m_Modifications:
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.9968672
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.2706395
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -4.470851
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971303556433150, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+      propertyPath: m_Name
+      value: TriggerZone (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7884e9947a5aa0242bd27f8292f9165e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &1872806446 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114603994111480756, guid: 7884e9947a5aa0242bd27f8292f9165e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1872806445}
+  m_Script: {fileID: 11500000, guid: 27733ac4b287f924499bf420fcd1ff35, type: 3}
+--- !u!1 &1872806447 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1971303556433150, guid: 7884e9947a5aa0242bd27f8292f9165e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1872806445}
+--- !u!4 &1872806448 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4985442089350560, guid: 7884e9947a5aa0242bd27f8292f9165e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1872806445}
+--- !u!114 &1872806449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1872806447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de983bc5a854704689ca55705166ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hitbox: {fileID: 1872806446}
+  Working: 1
+  HealthPoints: 100
+  MaxHealthPoints: 100
+  OnHPChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ShipComponent+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnComponentDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ShipComponent+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!1 &1935277442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1935277444}
+  - component: {fileID: 1935277443}
+  m_Layer: 0
+  m_Name: Ship
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1935277443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1935277442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a26f27b6bdac5c4ba6b35c8747715d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Reactor: {fileID: 26981420}
+  Engines: {fileID: 363112670}
+  Bridge: {fileID: 1872806449}
+  MachineGun: {fileID: 1983232523}
+  Railgun: {fileID: 718496141}
+  MissileLauncher: {fileID: 436332655}
+  OnShipDestoyed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Ship+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!4 &1935277444
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1935277442}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.0398226, y: 1.0401868, z: -4.9539385}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 26981419}
+  - {fileID: 363112669}
+  - {fileID: 1872806448}
+  - {fileID: 1983232524}
+  - {fileID: 718496142}
+  - {fileID: 436332656}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1983232522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1983232524}
+  - component: {fileID: 1983232523}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1983232523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1983232522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3340f7ec47bd8a4b94bbb8018fdfe86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InMag: 5
+  MaxInMag: 5
+  AmmoReserve: 50
+  InfiniteAmmoReserve: 0
+  MaxAmmoReserve: 50
+  ReloadTime: 5
+  FireRPM: 60
+  Projectile: {fileID: 0}
+  HitType: 0
+  TriggerZoneDamage: 0
+  ProjectileSpeed: 0
+  OnFire:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnEmptyMag:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnDryFire:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnReloadStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnReloadComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Gun+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!4 &1983232524
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1983232522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1935277444}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2047270858
 GameObject:
   m_ObjectHideFlags: 0

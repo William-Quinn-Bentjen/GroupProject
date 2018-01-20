@@ -14,9 +14,7 @@ public enum WeaponChoice
     Missile
 }
 public class GunSelectorUI : MonoBehaviour {
-    public GameObject MachineGun;
-    public GameObject RailGun;
-    public GameObject MissileLauncher;
+    public Ship PlayerShip;
     public Button SelectMachineGun;
     public Button SelectRailGun;
     public Button SelectMissileLauncher;
@@ -25,7 +23,6 @@ public class GunSelectorUI : MonoBehaviour {
 	void Start () {
 		if (WeaponSelected == WeaponChoice.Unchanged)
         {
-            
             WeaponSelected = WeaponChoice.None;
         }
         WeaponSelection();

@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+public enum ProjectileType
+{
+    Projectile,
+    //Raycast,
+    TriggerZone
+}
 public class Gun : MonoBehaviour {
     
     public int InMag = 5;
@@ -13,7 +18,9 @@ public class Gun : MonoBehaviour {
     public float ReloadTime = 5; 
     public float FireRPM = 60; 
     public GameObject Projectile;
-    //public float Projectile
+    public ProjectileType HitType;
+    public float TriggerZoneDamage = 0; //if using triggerzone will tell how much damage to do on hit
+    public float ProjectileSpeed;
     [System.Serializable]
     public class MyEvent : UnityEvent { }
     public MyEvent OnFire;
@@ -24,7 +31,7 @@ public class Gun : MonoBehaviour {
     //private
     private float ReadyToFireTime; //chambered at 0 (used for RPM control)
     private bool Reloading; //reloading ammo?
-    private float ReloadProgress;
+    private float ReloadProgress; // seconds since the reload stared
     //functions
     public bool ChamberedCheck()
     {
@@ -42,6 +49,32 @@ public class Gun : MonoBehaviour {
     {
         if (ChamberedCheck())
         {
+            //fire
+            //triggerzone
+            if (HitType == ProjectileType.TriggerZone)
+            {
+                List<GameObject> Hit = new List<GameObject>();
+                foreach (GameObject Interactor in Projectile.GetComponent<TriggerZone>().GetInteractors(TriggerState.Enter))
+                {
+                    Hit.Add(Interactor.gameObject);
+                }
+                foreach (GameObject Interactor in Projectile.GetComponent<TriggerZone>().GetInteractors(TriggerState.Stay))
+                {
+                    Hit.Add(Interactor);
+                }
+                foreach (GameObject Interactor in Projectile.GetComponent<TriggerZone>().GetInteractors(TriggerState.Exit))
+                {
+                    Hit.Add(Interactor);
+                }
+                foreach (GameObject Interactor in Hit)
+                {
+                    Debug.Log("Ihappened\n" + Interactor + Interactor.gameObject);
+                    Debug.Log("Ihappened HP" + Interactor.GetComponent<ShipComponent>().HealthPoints);
+                    Interactor.GetComponent<ShipComponent>().IncrementHealthPoints(TriggerZoneDamage);
+                }
+            }
+            //projectile
+
             //fire
             InMag--;
             ReadyToFireTime = -1 / (FireRPM / 60);
@@ -109,11 +142,12 @@ public class Gun : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        Fire();
         ReloadUpdate();
         ReadyToFireUpdate();
 	}
