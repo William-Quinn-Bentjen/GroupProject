@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum TotalAmmoDisplayType
+{
+    Hide,
+    TotalAmmo,
+    AmmoNotInMag
+}
+
 public class ReloadAnimationUI : MonoBehaviour {
     //getting tired (sorry for names)
     public Slider ReloadBar;
+    public TotalAmmoDisplayType TotalAmmo;
     //replace with gun later and change to private
     public float Duration = 1;
     private Image readyImage;
@@ -16,8 +24,28 @@ public class ReloadAnimationUI : MonoBehaviour {
     //private
     private float currentTime;
     private bool lerping = false;
-	// Use this for initialization
-	void Start () {
+
+    public void RefreshGunInfo()
+    {
+        //magAmmo = gun.inMag + "/" + gun.maxInMag;
+        //totalAmmo = 
+        if (TotalAmmo == TotalAmmoDisplayType.Hide)
+        {
+            totalAmmo.text = "";
+        }
+        else if (TotalAmmo == TotalAmmoDisplayType.TotalAmmo)
+        {
+            //totalAmmo.text = inMag + ammoReserve
+        }
+        else if (TotalAmmo == TotalAmmoDisplayType.AmmoNotInMag)
+        {
+            //totalAmmo.text = ammo reserve
+        }
+
+    }
+
+    // Use this for initialization
+    void Start () {
         
         foreach (Transform child in gameObject.transform)
         {
@@ -66,11 +94,7 @@ public class ReloadAnimationUI : MonoBehaviour {
             }
         }
 	}
-    public void RefreshGunInfo()
-    {
-        //magAmmo = gun.magcount + "/" + gun.magmaxcount;
-        //totalAmmo
-    }
+
     //start reload animation with specified duratuion set to 0/leave to use the duration that we currently have
     public void StartLerp(float duration = 0)
     {

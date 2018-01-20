@@ -63,6 +63,7 @@ public class TriggerZone : MonoBehaviour
     {
     }
 
+    //resets the lists when lateUpdate is called
     private void LateUpdate()
     {
         Entered = new List<GameObject>();
