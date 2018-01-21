@@ -81,7 +81,7 @@ public class ShipHealthBarUI : MonoBehaviour
         }
         else if (HPDisplayType == HPDisplayTypeBehavior.ValueAsPercent)
         {
-            TextBar.text = (Bar.value / Bar.maxValue * 100).ToString();
+            TextBar.text = (Bar.value / Bar.maxValue * 100).ToString("F2");
         }
         TextBar.text = PrefixText + TextBar.text + SuffixText;
     }
