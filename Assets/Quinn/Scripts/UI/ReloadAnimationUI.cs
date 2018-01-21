@@ -12,10 +12,11 @@ public enum TotalAmmoDisplayType
 
 public class ReloadAnimationUI : MonoBehaviour {
     //getting tired (sorry for names)
+    public Gun Weapon;
     public Slider ReloadBar;
     public TotalAmmoDisplayType TotalAmmo;
     //replace with gun later and change to private
-    public float Duration = 1;
+    private float Duration = 1; // set to 1 in case no weapon is equiped
     private Image readyImage;
     private Image fill;
     private Image background;
@@ -27,7 +28,8 @@ public class ReloadAnimationUI : MonoBehaviour {
 
     public void RefreshGunInfo()
     {
-        //magAmmo = gun.inMag + "/" + gun.maxInMag;
+        magAmmo.text = Weapon.InMag.ToString() + "/" + Weapon.MaxInMag.ToString();
+        
         //totalAmmo = 
         if (TotalAmmo == TotalAmmoDisplayType.Hide)
         {
@@ -35,13 +37,13 @@ public class ReloadAnimationUI : MonoBehaviour {
         }
         else if (TotalAmmo == TotalAmmoDisplayType.TotalAmmo)
         {
-            //totalAmmo.text = inMag + ammoReserve
+            totalAmmo.text = (Weapon.InMag + Weapon.AmmoReserve).ToString();
         }
         else if (TotalAmmo == TotalAmmoDisplayType.AmmoNotInMag)
         {
-            //totalAmmo.text = ammo reserve
+            totalAmmo.text = Weapon.AmmoReserve.ToString();
         }
-
+        Duration = Weapon.ReloadTime;
     }
 
     // Use this for initialization
@@ -76,6 +78,7 @@ public class ReloadAnimationUI : MonoBehaviour {
                 magAmmo = child.GetComponent<Text>();
             }
         }
+        RefreshGunInfo();
 	}
 	
 	// Update is called once per frame

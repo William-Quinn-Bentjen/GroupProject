@@ -109,6 +109,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VisibleAtStart: 0
   InteractsWithTags:
-  - Mahine Gun Bullet
-  - Railgun Bullet
-  - Missile Splash
+  - EnemyShot
+  - PlayerShot

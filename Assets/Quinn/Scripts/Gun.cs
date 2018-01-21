@@ -9,7 +9,7 @@ public enum ProjectileType
     TriggerZone
 }
 public class Gun : MonoBehaviour {
-    
+    //public
     public int InMag = 5;
     public int MaxInMag = 5;
     public int AmmoReserve = 50;
@@ -32,6 +32,7 @@ public class Gun : MonoBehaviour {
     private float ReadyToFireTime; //chambered at 0 (used for RPM control)
     private bool Reloading; //reloading ammo?
     private float ReloadProgress; // seconds since the reload stared
+
     //functions
     public bool ChamberedCheck()
     {
@@ -68,12 +69,11 @@ public class Gun : MonoBehaviour {
                 }
                 foreach (GameObject Interactor in Hit)
                 {
-                    Debug.Log("Ihappened\n" + Interactor + Interactor.gameObject);
-                    Debug.Log("Ihappened HP" + Interactor.GetComponent<ShipComponent>().HealthPoints);
                     Interactor.GetComponent<ShipComponent>().IncrementHealthPoints(TriggerZoneDamage);
+                    Debug.Log(Interactor.GetComponent<ShipComponent>().HealthPoints);
                 }
             }
-            //projectile
+            //projectile *(NEEDS TO BE DONE)
 
             //fire
             InMag--;

@@ -35,17 +35,19 @@ public class Ship : MonoBehaviour {
 	void Update () {
 		
 	}
-    public void UpdateHP()
+    private void UpdateHP()
     {
         HP = Reactor.HealthPoints + Engines.HealthPoints + Bridge.HealthPoints;
         MaxHP = Reactor.MaxHealthPoints + Engines.MaxHealthPoints + Bridge.MaxHealthPoints;
     }
     public float GetMaxHP()
     {
-        return HP;
+        UpdateHP();
+        return MaxHP;
     }
     public float GetHP()
     {
-        return MaxHP;
+        UpdateHP();
+        return HP;
     }
 }

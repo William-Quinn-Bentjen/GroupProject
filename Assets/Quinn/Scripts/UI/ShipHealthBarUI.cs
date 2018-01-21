@@ -4,14 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public enum HPDisplayTypeBehavior
+public class ShipHealthBarUI : MonoBehaviour
 {
-    BarText,
-    ValueBarText,
-    ValueBarTextBarMaxValue,
-    ValueAsPercent
-}
-public class HealthBarUI : MonoBehaviour {
+    public Ship PlayerShip;
     public Slider Bar;
     public HPDisplayTypeBehavior HPDisplayType;
     public string PrefixText = "";
@@ -22,19 +17,17 @@ public class HealthBarUI : MonoBehaviour {
 
     public MyEvent OnEmpty;
     public MyEvent OnFull;
-    public MyEvent OnChange;
 
     //private
+    private bool full;
     private Image FullImage;
     private Image fill;
     private Image background;
-    private bool full;
-    private bool barText;
-    private bool fullImage;
     private Text TextBar;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         foreach (Transform child in Bar.transform)
         {
             if (child.name == "Background")
@@ -58,24 +51,22 @@ public class HealthBarUI : MonoBehaviour {
             if (child.name == "Text")
             {
                 TextBar = child.GetComponent<Text>();
-                DisplayHp();
             }
+
         }
+        Bar.maxValue = PlayerShip.GetMaxHP();
+        RefreshValue();
         FullCheck();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    public void UpdateHealthBar(ShipComponent component)
+    // Update is called once per frame
+    void Update()
     {
-        SetValue(component.HealthPoints);
+        FullCheck();
     }
-
     private void DisplayHp()
     {
+
         if (HPDisplayType == HPDisplayTypeBehavior.BarText)
         {
             TextBar.text = BarText;
@@ -90,12 +81,13 @@ public class HealthBarUI : MonoBehaviour {
         }
         else if (HPDisplayType == HPDisplayTypeBehavior.ValueAsPercent)
         {
-            TextBar.text = (Bar.value/Bar.maxValue*100).ToString();
+            TextBar.text = (Bar.value / Bar.maxValue * 100).ToString();
         }
         TextBar.text = PrefixText + TextBar.text + SuffixText;
     }
+
     // a function that may be called after changing bar values
-    public void FullCheck()
+    private void FullCheck()
     {
         if (Bar.value >= Bar.maxValue)
         {
@@ -125,28 +117,9 @@ public class HealthBarUI : MonoBehaviour {
         DisplayHp();
     }
     //sets value of bar
-    public void SetValue(float newValue)
+    public void RefreshValue()
     {
-        float lastValue = Bar.value;
-        if (newValue >= Bar.maxValue)
-        {
-            Bar.value = Bar.maxValue;
-            OnFull.Invoke();
-        }
-        else if (newValue <= Bar.minValue)
-        {
-            Bar.value = Bar.minValue;
-            OnEmpty.Invoke();
-        }
-        else
-        {
-            if (lastValue != newValue)
-            {
-                Bar.value = newValue;
-                OnChange.Invoke();
-                FullCheck();
-            }
-        }
+        Bar.value = PlayerShip.GetHP();
+        FullCheck();
     }
-
 }
