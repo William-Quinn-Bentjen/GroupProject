@@ -8,6 +8,7 @@ TagManager:
   - EnemyShipComponent
   - PlayerShot
   - EnemyShot
+  - TeleporterNode
   layers:
   - Default
   - TransparentFX

@@ -20,7 +20,6 @@ public class Gun : MonoBehaviour {
     public GameObject Projectile;
     public ProjectileType HitType;
     public float TriggerZoneDamage = 0; //if using triggerzone will tell how much damage to do on hit
-    public float ProjectileSpeed;
     [System.Serializable]
     public class MyEvent : UnityEvent { }
     public MyEvent OnFire;
@@ -54,23 +53,10 @@ public class Gun : MonoBehaviour {
             //triggerzone
             if (HitType == ProjectileType.TriggerZone)
             {
-                List<GameObject> Hit = new List<GameObject>();
-                foreach (GameObject Interactor in Projectile.GetComponent<TriggerZone>().GetInteractors(TriggerState.Enter))
-                {
-                    Hit.Add(Interactor.gameObject);
-                }
-                foreach (GameObject Interactor in Projectile.GetComponent<TriggerZone>().GetInteractors(TriggerState.Stay))
-                {
-                    Hit.Add(Interactor);
-                }
-                foreach (GameObject Interactor in Projectile.GetComponent<TriggerZone>().GetInteractors(TriggerState.Exit))
-                {
-                    Hit.Add(Interactor);
-                }
+                List<GameObject> Hit = Projectile.GetComponent<TriggerZone>().GetAllInteractors();
                 foreach (GameObject Interactor in Hit)
                 {
-                    Interactor.GetComponent<ShipComponent>().IncrementHealthPoints(TriggerZoneDamage);
-                    Debug.Log(Interactor.GetComponent<ShipComponent>().HealthPoints);
+                    Interactor.gameObject.GetComponent<ShipComponent>().IncrementHealthPoints(TriggerZoneDamage);
                 }
             }
             //projectile *(NEEDS TO BE DONE)
@@ -90,13 +76,6 @@ public class Gun : MonoBehaviour {
             OnDryFire.Invoke();
         }
     }
-    private void ReadyToFireUpdate()
-    {
-        if (ChamberedCheck() == false)
-        {
-            ReadyToFireTime += Time.deltaTime;
-        }
-    }
     //starts the reload process and calls OnReloadStart's events
     public void ReloadStart()
     {
@@ -107,11 +86,20 @@ public class Gun : MonoBehaviour {
             Reloading = true;
         }
     }
+    private void ReadyToFireUpdate()
+    {
+        if (ChamberedCheck() == false)
+        {
+            ReadyToFireTime += Time.deltaTime;
+        }
+    }
+
     //called to keep track of time for realod 
     private void ReloadUpdate()
     {
         if (Reloading == true)
         {
+            Debug.Log("reloading");
             ReloadProgress += Time.deltaTime;
             if (ReloadProgress >= ReloadTime)
             {
@@ -126,6 +114,7 @@ public class Gun : MonoBehaviour {
         Reloading = false;
         if (!InfiniteAmmoReserve)
         {
+            //reload the ammo for non infinite guns
             if (AmmoReserve < MaxInMag)
             {
                 InMag = AmmoReserve;
@@ -137,6 +126,11 @@ public class Gun : MonoBehaviour {
                 AmmoReserve -= MaxInMag;
             }
         }
+        else
+        {
+            //reload ammo for infinite ammo gun
+            InMag = MaxInMag;
+        }
         OnReloadComplete.Invoke();
     }
 
@@ -146,7 +140,7 @@ public class Gun : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        Debug.Log("reloading" + Reloading + "\nReload Progress " + ReloadProgress +"\nReadyToFire " + ReadyToFireTime);
         Fire();
         ReloadUpdate();
         ReadyToFireUpdate();

@@ -92,6 +92,25 @@ public class TriggerZone : MonoBehaviour
             return new List<GameObject>();
         }
     }
+    public List<GameObject> GetAllInteractors()
+    {
+        List<GameObject> retval = Entered;
+        foreach (GameObject interactor in Stayed)
+        {
+            if (!retval.Contains(interactor))
+            {
+                retval.Add(interactor);
+            }
+        }
+        foreach (GameObject interactor in Exited)
+        {
+            if (!retval.Contains(interactor))
+            {
+                retval.Add(interactor);
+            }
+        }
+        return retval;
+    }
     //on enter
     void OnTriggerEnter(Collider other)
     {
