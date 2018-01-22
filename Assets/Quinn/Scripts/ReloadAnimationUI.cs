@@ -42,6 +42,6 @@ public class ReloadAnimationUI : MonoBehaviour {
         ReloadBar.value = ReloadBar.minValue;
         lerping = true;
     }
-    public void 
+   
     
 }
