@@ -19,16 +19,17 @@ public class GunSelectorUI : MonoBehaviour
     public MyEvent OnRailgunSelect;
     public MyEvent OnMissileSelect;
 
+    private bool firstUpdate = true;
     // Use this for initialization
     void Start()
     {
-        SelectWeapon(WeaponSelected);
+        firstUpdate = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (firstUpdate) { SelectWeapon(WeaponSelected); }
     }
 
     public void SelectWeapon(WeaponChoice choice)
