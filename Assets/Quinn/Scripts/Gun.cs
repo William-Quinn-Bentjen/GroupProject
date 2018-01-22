@@ -100,7 +100,7 @@ public class Gun : MonoBehaviour {
     //starts the reload process and calls OnReloadStart's events
     public void ReloadStart()
     {
-        if (Reloading != true)
+        if (Reloading != true && AmmoReserve > 0)
         {
             OnReloadStart.Invoke();
             ReloadProgress = 0;

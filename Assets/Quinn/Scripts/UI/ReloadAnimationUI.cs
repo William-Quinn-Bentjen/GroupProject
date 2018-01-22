@@ -7,7 +7,8 @@ public enum TotalAmmoDisplayType
 {
     Hide,
     TotalAmmo,
-    AmmoNotInMag
+    AmmoNotInMag,
+    Infinity
 }
 
 public class ReloadAnimationUI : MonoBehaviour {
@@ -25,7 +26,16 @@ public class ReloadAnimationUI : MonoBehaviour {
     //private
     private float currentTime;
     private bool lerping = false;
+    private string infinity = "∞";
 
+    public void SetAlpha(float value)
+    {
+        fill.GetComponent<CanvasRenderer>().SetAlpha(value);
+        background.GetComponent<CanvasRenderer>().SetAlpha(value);
+        readyImage.GetComponent<CanvasRenderer>().SetAlpha(value);
+        totalAmmo.GetComponent<CanvasRenderer>().SetAlpha(value);
+        magAmmo.GetComponent<CanvasRenderer>().SetAlpha(value);
+    }
     public void RefreshGunInfo()
     {
         magAmmo.text = Weapon.InMag.ToString() + "/" + Weapon.MaxInMag.ToString();
@@ -42,6 +52,10 @@ public class ReloadAnimationUI : MonoBehaviour {
         else if (TotalAmmo == TotalAmmoDisplayType.AmmoNotInMag)
         {
             totalAmmo.text = Weapon.AmmoReserve.ToString();
+        }
+        else if (TotalAmmo == TotalAmmoDisplayType.Infinity)
+        {
+            totalAmmo.text = infinity;
         }
         Duration = Weapon.ReloadTime;
     }

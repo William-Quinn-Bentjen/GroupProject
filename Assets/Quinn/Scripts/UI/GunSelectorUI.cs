@@ -1,61 +1,91 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using UnityEngine.UI;
-using System.Linq;
-
 public enum WeaponChoice
 {
-    None,
-    Unchanged,
     Machine,
     Railgun,
     Missile
 }
-public class GunSelectorUI : MonoBehaviour {
+public class GunSelectorUI : MonoBehaviour
+{
     public Ship PlayerShip;
-    public Button SelectMachineGun;
-    public Button SelectRailGun;
-    public Button SelectMissileLauncher;
-    public WeaponChoice WeaponSelected = WeaponChoice.None;
-	// Use this for initialization
-	void Start () {
-		if (WeaponSelected == WeaponChoice.Unchanged)
-        {
-            WeaponSelected = WeaponChoice.None;
-        }
-        WeaponSelection();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    public WeaponChoice WeaponSelected = WeaponChoice.Machine;
+    [System.Serializable]
+    public class MyEvent : UnityEvent { }
+    public MyEvent OnMachineGunSelect;
+    public MyEvent OnRailgunSelect;
+    public MyEvent OnMissileSelect;
 
-	}
-    public void WeaponSelection(WeaponChoice choice = WeaponChoice.None)
+    // Use this for initialization
+    void Start()
     {
-        if (choice != WeaponChoice.Unchanged)
+        SelectWeapon(WeaponSelected);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void SelectWeapon(WeaponChoice choice)
+    {
+        WeaponSelected = choice;
+        if (choice == WeaponChoice.Machine)
         {
-            if (choice != WeaponSelected)
+            OnMachineGunSelect.Invoke();
+        }
+        else if (choice == WeaponChoice.Railgun)
+        {
+            OnRailgunSelect.Invoke();
+        }
+        else if (choice == WeaponChoice.Missile)
+        {
+            OnMissileSelect.Invoke();
+        }
+    }
+    public void SelectWeapon(string choice)
+    {
+        if (choice == "MachineGun")
+        {
+            SelectWeapon(WeaponChoice.Machine);
+        }
+        else if (choice == "Railgun")
+        {
+            SelectWeapon(WeaponChoice.Railgun);
+        }
+        else if (choice == "MissileLauncher")
+        {
+            SelectWeapon(WeaponChoice.Missile);
+        }
+        else
+        {
+            Debug.Log("Unrecognized string\n" + choice);
+        }
+    }
+
+    public Gun GetSelectedWeapon()
+    {
+        foreach(Transform child in PlayerShip.transform)
+        {
+            if (child.name == "MachineGun" && WeaponSelected == WeaponChoice.Machine)
             {
-                if (choice == WeaponChoice.Machine)
-                {
-                    
-                }
-                else if (choice == WeaponChoice.Railgun)
-                {
-
-                }
-                else if (choice == WeaponChoice.Missile)
-                {
-
-                }
-                else if (choice == WeaponChoice.None)
-                {
-
-                }
-                WeaponSelected = choice;
+                return child.GetComponent<Gun>();
+            }
+            else if (child.name == "Railgun" && WeaponSelected == WeaponChoice.Railgun)
+            {
+                return child.GetComponent<Gun>();
+            }
+            else if (child.name == "MissileLauncher" && WeaponSelected == WeaponChoice.Missile)
+            {
+                return child.GetComponent<Gun>();
             }
         }
+        //couldn't find gun
+        Debug.Log("GetSelected called from gun selector ui and no gun could be found\nSelectedWeapon was " + WeaponSelected);
+        return null;
     }
 }
