@@ -8,22 +8,24 @@ public class PlayerControl : MonoBehaviour
     public Rigidbody rb;
     public float speed;
     public float SetSpeed;
+    public float roll = 0.0f;
+    public float pitch = 0.0f;
+    public float yaw = 0.0f;
 
-    public float grow = 0;
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void pitchIncrement(float pitch)
+    void pitchIncrement(Vector3 pitchInput, GameObject PlayerObject)
     {
-        
+        PlayerObject.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
-    void rollIncrement(float roll)
+    void rollIncrement(Vector3 rotationInput, GameObject PlayerObject)
     {
-        gameObject.gameObject.rotation.y += float amount;
+        PlayerObject.transform.rotation = Quaternion.Euler(0,10,0);
     }
 
     void yawIncrement(float yaw)
