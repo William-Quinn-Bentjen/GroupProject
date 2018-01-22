@@ -29,7 +29,11 @@ public class GunSelectorUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (firstUpdate) { SelectWeapon(WeaponSelected); }
+        if (firstUpdate)
+        {
+            firstUpdate = false;
+            SelectWeapon(WeaponSelected);
+        }
     }
 
     public void SelectWeapon(WeaponChoice choice)

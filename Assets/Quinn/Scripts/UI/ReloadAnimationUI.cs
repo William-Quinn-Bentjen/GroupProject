@@ -39,8 +39,6 @@ public class ReloadAnimationUI : MonoBehaviour {
     public void RefreshGunInfo()
     {
         magAmmo.text = Weapon.InMag.ToString() + "/" + Weapon.MaxInMag.ToString();
-        
-        //totalAmmo = 
         if (TotalAmmo == TotalAmmoDisplayType.Hide)
         {
             totalAmmo.text = "";
@@ -92,6 +90,7 @@ public class ReloadAnimationUI : MonoBehaviour {
                 magAmmo = child.GetComponent<Text>();
             }
         }
+        Fill();
         RefreshGunInfo();
 	}
 	
