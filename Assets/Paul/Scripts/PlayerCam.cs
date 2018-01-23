@@ -91,11 +91,11 @@ public class PlayerCam : MonoBehaviour
         //cam tilt controls
         if (Input.GetKey(KeyCode.E))
         {
-            myRig.AddRelativeTorque(Vector3.forward * ((-acceleration / 3) * Time.deltaTime));
+            myRig.AddRelativeTorque(Vector3.forward * ((-acceleration) * Time.deltaTime));
         }
         if (Input.GetKey(KeyCode.Q))
         {
-            myRig.AddRelativeTorque(Vector3.forward * ((acceleration / 3) * Time.deltaTime));
+            myRig.AddRelativeTorque(Vector3.forward * ((acceleration) * Time.deltaTime));
         }
     }
 }

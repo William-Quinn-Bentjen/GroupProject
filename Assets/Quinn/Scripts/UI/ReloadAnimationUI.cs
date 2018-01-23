@@ -109,6 +109,7 @@ public class ReloadAnimationUI : MonoBehaviour {
                 ReloadBar.value = Mathf.Lerp(ReloadBar.minValue, ReloadBar.maxValue, currentTime / Duration);
             }
         }
+        RefreshGunInfo();
 	}
 
     //start reload animation with specified duratuion set to 0/leave to use the duration that we currently have

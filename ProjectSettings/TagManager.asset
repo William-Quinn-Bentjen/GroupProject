@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PlayerShipComponent
+  - missile
+  - target
+  - EnemyShipComponent
+  - MissileSplash
+  - ShipHitBox
+  - Missile
+  - PlayerShot
+  - EnemyShot
   layers:
   - Default
   - TransparentFX

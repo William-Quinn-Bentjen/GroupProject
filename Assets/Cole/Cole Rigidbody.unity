@@ -5504,7 +5504,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1168173773}
-  m_LocalRotation: {x: -0, y: -0, z: -0.6135673, w: 0.7896424}
+  m_LocalRotation: {x: -0, y: -0, z: -0.61356735, w: 0.78964245}
   m_LocalPosition: {x: 0.6794955, y: -0.38013455, z: 0}
   m_LocalScale: {x: 1.747307, y: 0.61229914, z: 1}
   m_Children: []
@@ -6276,6 +6276,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1272626828}
   - component: {fileID: 1272626827}
+  - component: {fileID: 1272626830}
+  - component: {fileID: 1272626829}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -6341,6 +6343,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1272626829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272626826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a26f27b6bdac5c4ba6b35c8747715d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Reactor: {fileID: 0}
+  Engines: {fileID: 0}
+  Bridge: {fileID: 0}
+  MachineGun: {fileID: 0}
+  Railgun: {fileID: 0}
+  MissileLauncher: {fileID: 0}
+  OnShipDestoyed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Ship+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &1272626830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272626826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee959845507f2034398c393dd28b06cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  homingSensitivity: 0
+  minDist: 0
+  myShip: {fileID: 0}
+  target: {fileID: 0}
+  metersPerSec: 0
+  distfromTarg: 0
+  actionType: 0
+  attackActionType: 0
+  mood: 0
 --- !u!1 &1274786598
 GameObject:
   m_ObjectHideFlags: 0

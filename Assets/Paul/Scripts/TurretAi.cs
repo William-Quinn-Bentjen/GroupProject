@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TurretAi : MonoBehaviour
 {
+    //place object directly on turret.
     public float turretRange;
     Transform turret;
-    //Gun myGun;
+    Gun myGun;
 
 
     public float reactionTime;
@@ -16,7 +17,7 @@ public class TurretAi : MonoBehaviour
     void Start()
     {
         turret = GetComponent<Transform>();
-        //myGun = GetComponent<Gun>();
+        myGun = GetComponent<Gun>();
     }
 
 
@@ -61,7 +62,11 @@ public class TurretAi : MonoBehaviour
         {
             transform.LookAt(Target.transform.position);
         }
+        //Enemy AI will order the turret to fire.
+        if (GetComponentInParent<EnemyAI>() == null)
+        {
+            myGun.Fire();
+        }
 
-        //myGun.fire();
     }
 }

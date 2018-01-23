@@ -10,6 +10,7 @@ public enum ProjectileType
 }
 public class Gun : MonoBehaviour {
     //public
+    
     public int InMag = 5;
     public int MaxInMag = 5;
     public int AmmoReserve = 50;
@@ -19,6 +20,7 @@ public class Gun : MonoBehaviour {
     public float FireRPM = 60; 
     public GameObject Projectile;
     public ProjectileType HitType;
+    public Transform SpawnPos;
     public float TriggerZoneDamage = 0; //if using triggerzone will tell how much damage to do on hit
     [System.Serializable]
     public class MyEvent : UnityEvent { }
@@ -60,7 +62,12 @@ public class Gun : MonoBehaviour {
                 }
             }
             //projectile *(NEEDS TO BE DONE)
-
+            if (HitType == ProjectileType.Projectile)
+            {
+                GameObject justFired = Instantiate(Projectile);
+                justFired.transform.position = SpawnPos.transform.position;
+                justFired.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 1250);
+            }
             //fire
             InMag--;
             ReadyToFireTime = -1 / (FireRPM / 60);
