@@ -93,4 +93,12 @@ public class GunSelectorUI : MonoBehaviour
         Debug.Log("GetSelected called from gun selector ui and no gun could be found\nSelectedWeapon was " + WeaponSelected);
         return null;
     }
+    public void FireSelected()
+    {
+        GetSelectedWeapon().Fire();
+    }
+    public void ReloadSelected()
+    {
+        GetSelectedWeapon().ReloadStart();
+    }
 }

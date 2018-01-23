@@ -20,8 +20,17 @@ public class SpeedControlUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        SpeedometerSet();
 	}
+
+    public void ThrottleInputListener()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        {
+            PlayerShip.GetComponent<Ship>().IncrementThrottle(Input.GetAxis("Mouse ScrollWheel"));
+            Throttle.value = PlayerShip.GetComponent<Ship>().GetThrottleValue();
+        }
+    }
 
     public void SetThrottle()
     {
