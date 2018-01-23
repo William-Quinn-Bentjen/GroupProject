@@ -33,7 +33,7 @@ public class PlayerCam : MonoBehaviour
 
         myRig.AddRelativeTorque(Vector3.up * Input.GetAxis("Mouse X") * mouseSensX);//do not multiply by time.deltatime as mouse input is frame independant
 
-        myRig.AddRelativeTorque(Vector3.left * Input.GetAxis("Mouse Y") * mouseSensY);
+        myRig.AddRelativeTorque(Vector3.forward * Input.GetAxis("Mouse Y") * mouseSensY);
 
         //vertLookRotation = Mathf.Clamp(vertLookRotation, -60, 60); I guess since this is a full 3D combat game, clamping the players view range is kinda pointless.
 
@@ -42,28 +42,28 @@ public class PlayerCam : MonoBehaviour
         {
             if (metersPerSec < HardSpeedLimmit)
             {
-                myRig.AddRelativeForce(new Vector3(0, 0, acceleration * throttle) * Time.deltaTime);
+                myRig.AddRelativeForce(new Vector3(acceleration * throttle,0 ,0 ) * Time.deltaTime);
             }
         }
         if (Input.GetKey(KeyCode.S))
         {
             if (metersPerSec < HardSpeedLimmit)
             {
-                myRig.AddRelativeForce(new Vector3(0, 0, -acceleration * throttle) * Time.deltaTime);
+                myRig.AddRelativeForce(new Vector3(-acceleration * throttle,0 ,0 ) * Time.deltaTime);
             }
         }
         if (Input.GetKey(KeyCode.D))
         {
             if (metersPerSec < HardSpeedLimmit)
             {
-                myRig.AddRelativeForce(new Vector3(acceleration * throttle, 0, 0) * Time.deltaTime);
+                myRig.AddRelativeForce(new Vector3(0, 0, -acceleration * throttle) * Time.deltaTime);
             }
         }
         if (Input.GetKey(KeyCode.A))
         {
             if (metersPerSec < HardSpeedLimmit)
             {
-                myRig.AddRelativeForce(new Vector3(-acceleration * throttle, 0, 0) * Time.deltaTime);
+                myRig.AddRelativeForce(new Vector3(0,0,acceleration * throttle) * Time.deltaTime);
             }
         }
         if (Input.GetKey(KeyCode.Space))
@@ -91,11 +91,11 @@ public class PlayerCam : MonoBehaviour
         //cam tilt controls
         if (Input.GetKey(KeyCode.E))
         {
-            myRig.AddRelativeTorque(Vector3.forward * ((-acceleration) * Time.deltaTime));
+            myRig.AddRelativeTorque(Vector3.right * ((-acceleration) * Time.deltaTime));
         }
         if (Input.GetKey(KeyCode.Q))
         {
-            myRig.AddRelativeTorque(Vector3.forward * ((acceleration) * Time.deltaTime));
+            myRig.AddRelativeTorque(Vector3.right * ((acceleration) * Time.deltaTime));
         }
     }
 }
