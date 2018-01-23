@@ -23,14 +23,19 @@ public class SpeedControlUI : MonoBehaviour {
 		
 	}
 
-    public void IncrementThrottle()
+    public void SetThrottle()
     {
-
+        PlayerShip.GetComponent<Ship>().SetThrottle(Throttle.value);
     }
 
     //Sets the speedometer text to that speed
     public void SpeedometerSet()
     {
-        Speedometer.text = PlayerShip.gameObject.GetComponent<Rigidbody>().velocity.magnitude.ToString("F2");
+        Speedometer.text = PlayerShip.GetComponent<Ship>().GetSpeed().ToString("F2");
+    }
+
+    public float SpeedometerGet()
+    {
+        return PlayerShip.GetComponent<Ship>().GetSpeed();
     }
 }

@@ -64,6 +64,15 @@ public class ShipHealthBarUI : MonoBehaviour
     {
         FullCheck();
     }
+
+    //sets value of bar
+    public void RefreshValue()
+    {
+        Bar.value = PlayerShip.GetHP();
+        FullCheck();
+    }
+
+    //sets textbar text if the bar (called in end of FullCheck)
     private void DisplayHp()
     {
 
@@ -116,10 +125,5 @@ public class ShipHealthBarUI : MonoBehaviour
         }
         DisplayHp();
     }
-    //sets value of bar
-    public void RefreshValue()
-    {
-        Bar.value = PlayerShip.GetHP();
-        FullCheck();
-    }
+
 }
