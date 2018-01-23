@@ -8,7 +8,9 @@ TagManager:
   - EnemyShipComponent
   - PlayerShot
   - EnemyShot
-  - TeleporterNode
+  - Missile
+  - MissileSplash
+  - ShipHitBox
   layers:
   - Default
   - TransparentFX

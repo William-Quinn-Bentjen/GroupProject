@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SpeedControlUI : MonoBehaviour {
     //public
+    public GameObject PlayerShip;
     public Slider Throttle;
     public Text Speedometer;
     public string SpeedometerPrefix = "Speed: ";
@@ -22,9 +23,14 @@ public class SpeedControlUI : MonoBehaviour {
 		
 	}
 
+    public void IncrementThrottle()
+    {
+
+    }
+
     //Sets the speedometer text to that speed
     public void SpeedometerSet()
     {
-        Speedometer.text = SpeedometerPrefix + Throttle.value + SpeedometerSuffix;
+        Speedometer.text = PlayerShip.gameObject.GetComponent<Rigidbody>().velocity.magnitude.ToString("F2");
     }
 }

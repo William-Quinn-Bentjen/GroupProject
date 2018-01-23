@@ -10,6 +10,7 @@ public class Ship : MonoBehaviour {
     public Gun MachineGun;
     public Gun Railgun;
     public Gun MissileLauncher;
+    public float Throttle = 0;
 
     [System.Serializable]
     public class MyEvent : UnityEvent { }

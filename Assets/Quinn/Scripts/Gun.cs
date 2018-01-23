@@ -99,7 +99,6 @@ public class Gun : MonoBehaviour {
     {
         if (Reloading == true)
         {
-            Debug.Log("reloading");
             ReloadProgress += Time.deltaTime;
             if (ReloadProgress >= ReloadTime)
             {
@@ -140,8 +139,7 @@ public class Gun : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("reloading" + Reloading + "\nReload Progress " + ReloadProgress +"\nReadyToFire " + ReadyToFireTime);
-        Fire();
+        //Fire();
         ReloadUpdate();
         ReadyToFireUpdate();
 	}
