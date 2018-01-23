@@ -608,8 +608,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretRange: 0
-  listOfTargets: []
   reactionTime: 0
+  Target: {fileID: 0}
 --- !u!4 &1510856113
 Transform:
   m_ObjectHideFlags: 0
@@ -933,7 +933,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e709b2e15fac2a44bc398ffe7dfa9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  acceleration: 0
+  throttle: 0
+  metersPerSec: 0
   mouseSensX: 3.5
   mouseSensY: 3.5
 --- !u!4 &1767153080
@@ -1074,7 +1076,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e709b2e15fac2a44bc398ffe7dfa9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
+  acceleration: 700
+  throttle: 1
+  metersPerSec: 0
   mouseSensX: 3.5
   mouseSensY: 3.5
 --- !u!1 &2105904600
