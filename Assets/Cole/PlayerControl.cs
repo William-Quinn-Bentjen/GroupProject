@@ -18,26 +18,24 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void pitchIncrement(Vector3 pitchInput, GameObject PlayerObject)
+    void pitchIncrement(GameObject PlayerObject)
     {
-        PlayerObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.Rotate(Vector3.forward * Time.deltaTime);
     }
 
-    void rollIncrement(Vector3 rotationInput, GameObject PlayerObject)
+    void rollIncrement(GameObject PlayerObject)
     {
-        PlayerObject.transform.rotation = Quaternion.Euler(0,10,0);
+        transform.Rotate(Vector3.right * Time.deltaTime);
     }
 
-    void yawIncrement(float yaw)
+    void yawIncrement(GameObject PlayerObject)
     {
-
+        transform.Rotate(Vector3.up * Time.deltaTime);
     }
-
     // Update is called once per frame
     void Update()
     {
-   
-
+        yawIncrement(gameObject);
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 move = new Vector3(horizontal, 0, vertical);
