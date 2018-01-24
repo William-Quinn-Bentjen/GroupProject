@@ -6,7 +6,7 @@ public class PlayerCam : MonoBehaviour
 {
     //This is the first person cam controls
     public float acceleration;
-    public float throttle;//adjustable speed limmit.
+    public float throttle;//adjustable speed limmit. values ranges from 0 to 1.
     public float HardSpeedLimmit = 30;//in meters per second
     public float metersPerSec;
 

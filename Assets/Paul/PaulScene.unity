@@ -935,6 +935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 0
   throttle: 0
+  HardSpeedLimmit: 30
   metersPerSec: 0
   mouseSensX: 3.5
   mouseSensY: 3.5
@@ -1078,6 +1079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 700
   throttle: 1
+  HardSpeedLimmit: 30
   metersPerSec: 0
   mouseSensX: 3.5
   mouseSensY: 3.5

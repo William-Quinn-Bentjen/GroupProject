@@ -69,130 +69,130 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
 
-        ////AI refresh- Needed in order to keep the Ai from getting confused
-        //actionType = CurrentAction.IDLE;
+        //AI refresh- Needed in order to keep the Ai from getting confused
+        actionType = CurrentAction.IDLE;
 
-        ////Measurments-----------------------------------------------------------------------------------------------------------------------------------------------------
-        //metersPerSec = myRig.velocity.magnitude;
-        //distfromTarg = (transform.position - target.position).magnitude;
+        //Measurments-----------------------------------------------------------------------------------------------------------------------------------------------------
+        metersPerSec = myRig.velocity.magnitude;
+        distfromTarg = (transform.position - target.position).magnitude;
 
-        ////Logic--------------------------------------------------------------------------------------------------------------------------------------------------------
-        //if (target == null)
-        //{
-        //    idle();
-        //}
-        //else
-        //{
-        //    /*
-        //    TODO List:
-        //    1. Set up weapons attack rneg logic
-        //        ex: If target is "this dist" away then use "this gun"
-        //    2. Set up AI mood
-        //        ex: Random choose if the AI is agressive or reserved.
-        //            Reserved: will use up all it's ammmo for each weapon type, by order of range, before advancing. Retreats if the player gets too close.
-        //            Agressive: Will always advance towards the player fireing every availible weapon it can along the way. retreats only at low hp.
+        //Logic--------------------------------------------------------------------------------------------------------------------------------------------------------
+        if (target == null)
+        {
+            idle();
+        }
+        else
+        {
+            /*
+            TODO List:
+            1. Set up weapons attack rneg logic
+                ex: If target is "this dist" away then use "this gun"
+            2. Set up AI mood
+                ex: Random choose if the AI is agressive or reserved.
+                    Reserved: will use up all it's ammmo for each weapon type, by order of range, before advancing. Retreats if the player gets too close.
+                    Agressive: Will always advance towards the player fireing every availible weapon it can along the way. retreats only at low hp.
 
-        //    */
-        //    if (mood == AImode.Reserved)
-        //    {
-
-
-
-        //        //if(missileAmmo > 0 && distFromTarg > railgunRang)
-        //        actionType = actionType | CurrentAction.ATTACK;//adds attack to the action pool
-        //        attackActionType = AttackType.Missile;
-        //        //else if(railgunAmmo > 25 && distFromTarg < railgunrange && distFromtarg > machineGunRange)
-        //        actionType = actionType | CurrentAction.ATTACK;
-        //        attackActionType = AttackType.Railgun;
-        //        //else 
-        //        actionType = actionType | CurrentAction.ATTACK;
-        //        attackActionType = AttackType.MachineGun;
-
-
-        //        //if(RailGunAmmo <= 0 || MissileAmmo <= 0)
-        //        //if(RailgunAmmo <= 0 && MissileAmmo <=0 && distFromtarg > minDist)
-        //        actionType = actionType | CurrentAction.ADVANCE;
-
-        //        //else if(MissileAmmo <= 0 && RailGunAmmo >=0 && DistfromTarg > RailgunRange)
-        //        actionType = actionType | CurrentAction.ADVANCE;
-
-        //        //if(DistFromTarg < minDist)
-        //        actionType = actionType = actionType | CurrentAction.RETREAT;
-        //        actionType = actionType & ~CurrentAction.ADVANCE;
-        //        //if((RailGunAmmo > 0 && distFromTarg < machinegunRange))
-        //        actionType = actionType = actionType | CurrentAction.RETREAT;
-        //        actionType = actionType & ~CurrentAction.ADVANCE;
-        //        //if((MissileAmmo > 0) && distFromTarg < railGunRange)
-        //        actionType = actionType = actionType | CurrentAction.RETREAT;
-        //        actionType = actionType & ~CurrentAction.ADVANCE;
+            */
+            if (mood == AImode.Reserved)
+            {
 
 
 
-
-        //    }
-        //    else
-        //    {
-        //        //if(Hp > maxHp)
-        //            actionType = actionType | CurrentAction.ADVANCE;
-
-        //            //if(missileAmmo > 0 && distFromTarg > railgunRang)
-        //                actionType = actionType | CurrentAction.ATTACK;//adds attack to the action pool
-        //                attackActionType = AttackType.Missile;
-        //            //else if(railgunAmmo > 25 && distFromTarg < railgunrange && distFromtarg > machineGunRange)
-        //                actionType = actionType | CurrentAction.ATTACK;
-        //                attackActionType = AttackType.Railgun;
-        //            //else 
-        //                actionType = actionType | CurrentAction.ATTACK;
-        //                attackActionType = AttackType.MachineGun;
-        //        //else
-        //            actionType = actionType = actionType | CurrentAction.RETREAT;
-        //            //if(missileAmmo > 0 && distFromTarg > railgunRang)
-        //                actionType = actionType | CurrentAction.ATTACK;//adds attack to the action pool
-        //                attackActionType = AttackType.Missile;
-        //            //else if(railgunAmmo > 25 && distFromTarg < railgunrange && distFromtarg > machineGunRange)
-        //                actionType = actionType | CurrentAction.ATTACK;
-        //                attackActionType = AttackType.Railgun;
-        //            //else 
-        //                actionType = actionType | CurrentAction.ATTACK;
-        //                attackActionType = AttackType.MachineGun;
-
-        //        //if(RailGunAmmo <= 0 || MissileAmmo <= 0)
-        //        //if(RailgunAmmo <= 0 && MissileAmmo <=0 && distFromtarg > minDist)
-        //        actionType = actionType | CurrentAction.ADVANCE;
-
-        //        //else if(MissileAmmo <= 0 && RailGunAmmo >=0 && DistfromTarg > RailgunRange)
-        //        actionType = actionType | CurrentAction.ADVANCE;
-        //    }
+                //if(missileAmmo > 0 && distFromTarg > railgunRang)
+                actionType = actionType | CurrentAction.ATTACK;//adds attack to the action pool
+                attackActionType = AttackType.Missile;
+                //else if(railgunAmmo > 25 && distFromTarg < railgunrange && distFromtarg > machineGunRange)
+                actionType = actionType | CurrentAction.ATTACK;
+                attackActionType = AttackType.Railgun;
+                //else 
+                actionType = actionType | CurrentAction.ATTACK;
+                attackActionType = AttackType.MachineGun;
 
 
+                //if(RailGunAmmo <= 0 || MissileAmmo <= 0)
+                //if(RailgunAmmo <= 0 && MissileAmmo <=0 && distFromtarg > minDist)
+                actionType = actionType | CurrentAction.ADVANCE;
+
+                //else if(MissileAmmo <= 0 && RailGunAmmo >=0 && DistfromTarg > RailgunRange)
+                actionType = actionType | CurrentAction.ADVANCE;
+
+                //if(DistFromTarg < minDist)
+                actionType = actionType = actionType | CurrentAction.RETREAT;
+                actionType = actionType & ~CurrentAction.ADVANCE;
+                //if((RailGunAmmo > 0 && distFromTarg < machinegunRange))
+                actionType = actionType = actionType | CurrentAction.RETREAT;
+                actionType = actionType & ~CurrentAction.ADVANCE;
+                //if((MissileAmmo > 0) && distFromTarg < railGunRange)
+                actionType = actionType = actionType | CurrentAction.RETREAT;
+                actionType = actionType & ~CurrentAction.ADVANCE;
+
+
+
+
+            }
+            else
+            {
+                //if(Hp > maxHp)
+                actionType = actionType | CurrentAction.ADVANCE;
+
+                //if(missileAmmo > 0 && distFromTarg > railgunRang)
+                actionType = actionType | CurrentAction.ATTACK;//adds attack to the action pool
+                attackActionType = AttackType.Missile;
+                //else if(railgunAmmo > 25 && distFromTarg < railgunrange && distFromtarg > machineGunRange)
+                actionType = actionType | CurrentAction.ATTACK;
+                attackActionType = AttackType.Railgun;
+                //else 
+                actionType = actionType | CurrentAction.ATTACK;
+                attackActionType = AttackType.MachineGun;
+                //else
+                actionType = actionType = actionType | CurrentAction.RETREAT;
+                //if(missileAmmo > 0 && distFromTarg > railgunRang)
+                actionType = actionType | CurrentAction.ATTACK;//adds attack to the action pool
+                attackActionType = AttackType.Missile;
+                //else if(railgunAmmo > 25 && distFromTarg < railgunrange && distFromtarg > machineGunRange)
+                actionType = actionType | CurrentAction.ATTACK;
+                attackActionType = AttackType.Railgun;
+                //else 
+                actionType = actionType | CurrentAction.ATTACK;
+                attackActionType = AttackType.MachineGun;
+
+                //if(RailGunAmmo <= 0 || MissileAmmo <= 0)
+                //if(RailgunAmmo <= 0 && MissileAmmo <=0 && distFromtarg > minDist)
+                actionType = actionType | CurrentAction.ADVANCE;
+
+                //else if(MissileAmmo <= 0 && RailGunAmmo >=0 && DistfromTarg > RailgunRange)
+                actionType = actionType | CurrentAction.ADVANCE;
+            }
 
 
 
 
 
-        //    if (((actionType & ~CurrentAction.IDLE) == CurrentAction.IDLE) && ((actionType & ~CurrentAction.ADVANCE) != CurrentAction.ADVANCE) && ((actionType & ~CurrentAction.RETREAT) != CurrentAction.RETREAT))
-        //    {
-        //        idle();
 
-        //    }
 
-        //    if ((actionType & ~CurrentAction.ADVANCE) == CurrentAction.ADVANCE)
-        //    {
-        //        approachPlayer();
-        //    }
+            if (((actionType & CurrentAction.IDLE) == CurrentAction.IDLE) && ((actionType & ~CurrentAction.ADVANCE) != CurrentAction.ADVANCE) && ((actionType & ~CurrentAction.RETREAT) != CurrentAction.RETREAT))
+            {
+                idle();
 
-        //    if ((actionType & ~CurrentAction.ATTACK) == CurrentAction.ATTACK)
-        //    {
-        //        atkType();
-        //    }
+            }
 
-        //    if ((actionType & ~CurrentAction.RETREAT) == CurrentAction.RETREAT)
-        //    {
-        //        avoidPlayer();
-        //    }
-        //}
+            if ((actionType & CurrentAction.ADVANCE) == CurrentAction.ADVANCE)
+            {
+                approachPlayer();
+            }
 
-        ////post logic----------------------------------------------------------------------------------------------------------------------------------------------------------
+            if ((actionType & CurrentAction.ATTACK) == CurrentAction.ATTACK)
+            {
+                atkType();
+            }
+
+            if ((actionType & CurrentAction.RETREAT) == CurrentAction.RETREAT)
+            {
+                avoidPlayer();
+            }
+        }
+
+        //post logic----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
