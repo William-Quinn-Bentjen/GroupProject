@@ -62,7 +62,7 @@ public class ShipHealthBarUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        RefreshValue();
     }
 
     //sets value of bar

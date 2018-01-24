@@ -27,7 +27,7 @@ public class Ship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        UpdateHP();
 	}
     //used internally to make sure a value is between 0 and 1
     private float ThrottleValueCheck(float value)
@@ -69,6 +69,10 @@ public class Ship : MonoBehaviour {
     public void UpdateHP()
     {
         HP = Reactor.HealthPoints + Engines.HealthPoints + Bridge.HealthPoints;
+        if (HP <= 0)
+        {
+            OnShipDestoyed.Invoke();
+        }
         MaxHP = Reactor.MaxHealthPoints + Engines.MaxHealthPoints + Bridge.MaxHealthPoints;
     }
     //returns the max HP of the ship after refreshing the value

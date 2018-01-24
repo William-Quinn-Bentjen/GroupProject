@@ -4,29 +4,42 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+    public bool CursorLockedAtStart = false;
 
 	// Use this for initialization
 	void Start () {
-		
+        CursorLock(CursorLockedAtStart);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+    public void CursorLock(bool enabled = false)
+    {
+        //locks or unlocks the cursor
+        if (enabled)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
 
+    //Load scenes
     public void LoadMainMenu()
     {
         LoadScene("MainMenu");
     }
-
     public void LoadWin()
     {
         LoadScene("Victory");
     }
     public void LoadLoss()
     {
-        LoadScene("MainMenu");
+        LoadScene("Defeat");
     }
     public void LoadCredits()
     {
@@ -41,6 +54,7 @@ public class GameManager : MonoBehaviour {
     {
         SceneManager.LoadScene(name);
     }
+    //close game
     public void QuitGame()
     {
         Application.Quit();

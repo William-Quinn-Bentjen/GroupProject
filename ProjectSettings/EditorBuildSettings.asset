@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Quinn/Scenes/ShipUITest.unity
     guid: 4d0fc2f04cc850449b5404df3269215f
   - enabled: 1
-    path: Assets/Quinn/Scenes/Credits.unity
-    guid: f961a555b96567f4f8b8425a384a36b6
+    path: Assets/Quinn/Scenes/Victory.unity
+    guid: b460546339dd0e341a78ed868fdf01f6
   - enabled: 1
     path: Assets/Quinn/Scenes/Defeat.unity
     guid: 89a424f18d1d6f4408db6fb7bf1e8831
   - enabled: 1
-    path: Assets/Quinn/Scenes/Victory.unity
-    guid: b460546339dd0e341a78ed868fdf01f6
+    path: Assets/Quinn/Scenes/Credits.unity
+    guid: f961a555b96567f4f8b8425a384a36b6
