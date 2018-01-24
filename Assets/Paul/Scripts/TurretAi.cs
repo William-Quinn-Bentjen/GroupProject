@@ -60,12 +60,17 @@ public class TurretAi : MonoBehaviour
 
         if (Target != null)
         {
-            transform.LookAt(Target.transform.position);
+            //transform.LookAt(Quaternion.AngleAxis(-90, Vector3.up) * Target.transform.position);
+            transform.forward = Vector3.Slerp(transform.forward, Target.transform.position, 1);
         }
         //Enemy AI will order the turret to fire.
         if (GetComponentInParent<EnemyAI>() == null)
         {
-            myGun.Fire();
+            if (Input.GetButton("Fire"))
+            {
+                myGun.Fire();
+            }
+
         }
 
     }

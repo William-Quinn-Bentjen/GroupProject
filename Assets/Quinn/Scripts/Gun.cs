@@ -55,6 +55,7 @@ public class Gun : MonoBehaviour {
             //triggerzone
             if (HitType == ProjectileType.TriggerZone)
             {
+                Debug.Log("Fired my lazer");
                 List<GameObject> Hit = Projectile.GetComponent<TriggerZone>().GetAllInteractors();
                 foreach (GameObject Interactor in Hit)
                 {
@@ -64,6 +65,7 @@ public class Gun : MonoBehaviour {
             //projectile *(NEEDS TO BE DONE)
             if (HitType == ProjectileType.Projectile)
             {
+                Debug.Log("Fired my Projectile");
                 GameObject justFired = Instantiate(Projectile);
                 justFired.transform.position = SpawnPos.transform.position;
                 justFired.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 1250);
@@ -82,6 +84,9 @@ public class Gun : MonoBehaviour {
         {
             OnDryFire.Invoke();
         }
+
+
+
     }
     //starts the reload process and calls OnReloadStart's events
     public void ReloadStart()

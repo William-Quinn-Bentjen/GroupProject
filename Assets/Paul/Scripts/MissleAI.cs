@@ -35,14 +35,17 @@ public class MissleAI : MonoBehaviour
     {
         metersPerSec = myRig.velocity.magnitude;
 
-        Vector3 relativePos = target.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, homingSensitivity);//the main bit of tracking.
-
+        //Vector3 relativePos = target.position - transform.position;
+        //relativePos = Quaternion.AngleAxis(-90, Vector3.up) * relativePos;//rotates 90 deg
+        ////relativePos = Quaternion.AngleAxis(90, Vector3.right) * relativePos;//rotates 90 deg
+        //relativePos = Quaternion.AngleAxis(180, Vector3.forward) * relativePos;//rotates 90 deg
+        //Quaternion rotation = Quaternion.LookRotation(relativePos);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, homingSensitivity);//the main bit of tracking.
+        transform.right = Vector3.Slerp(transform.right, target.transform.position - transform.position, homingSensitivity);
 
         if (metersPerSec < speedLimmit)
         {
-            myRig.AddRelativeForce(new Vector3(0, 0, speed) * Time.deltaTime);//This uses rigidbody and looks more real. Best setting for drag and mass is 0.5(drag) to 1(mass)
+            myRig.AddRelativeForce((transform.right * speed) * Time.deltaTime);//This uses rigidbody and looks more real. Best setting for drag and mass is 0.5(drag) to 1(mass)
                                                                               //transform.Translate(0, 0, speed * Time.deltaTime, Space.Self);//This option does not use rigidbody but is far more accurate
         }
 

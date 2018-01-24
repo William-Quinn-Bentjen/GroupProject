@@ -124,6 +124,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
+            
             /*
             TODO List:
             1. Set up weapons attack rneg logic
@@ -136,7 +137,7 @@ public class EnemyAI : MonoBehaviour
             */
             if (mood == AImode.Reserved)
             {
-
+                Debug.Log("decision made");
                 //railGun range = 400
                 //Machinegun range = 75
 
@@ -195,8 +196,10 @@ public class EnemyAI : MonoBehaviour
             }
             else
             {
+                Debug.Log("Better decision made");
                 if (myShip.GetHP() > myShip.GetMaxHP() / 4)
                 {
+                    
                     actionType = actionType | CurrentAction.ADVANCE;
                     if (missile.AmmoReserve > 0 && distfromTarg > 400)
                     {
@@ -218,7 +221,7 @@ public class EnemyAI : MonoBehaviour
                 }
                 else
                 {
-                    actionType = actionType = actionType | CurrentAction.RETREAT;
+                    actionType = actionType | CurrentAction.RETREAT;
                     if (missile.AmmoReserve > 0 && distfromTarg > 400)
                     {
                         actionType = actionType | CurrentAction.ATTACK;//adds attack to the action pool
@@ -255,35 +258,38 @@ public class EnemyAI : MonoBehaviour
 
 
 
-
+            Debug.Log((int)actionType);
 
 
 
             if (((actionType & ~CurrentAction.IDLE) == CurrentAction.IDLE) && ((actionType & ~CurrentAction.ADVANCE) != CurrentAction.ADVANCE) && ((actionType & ~CurrentAction.RETREAT) != CurrentAction.RETREAT))
             {
                 idle();
-
+                Debug.Log("idle");
             }
 
-            if ((actionType & ~CurrentAction.ADVANCE) == CurrentAction.ADVANCE)
+            if ((actionType & CurrentAction.ADVANCE) == CurrentAction.ADVANCE)
             {
+                Debug.Log("approachPlayer");
                 approachPlayer();
             }
 
-            if ((actionType & ~CurrentAction.ATTACK) == CurrentAction.ATTACK)
+            if ((actionType & CurrentAction.ATTACK) == CurrentAction.ATTACK)
             {
+                Debug.Log("AtkType");
                 atkType();
             }
 
-            if ((actionType & ~CurrentAction.RETREAT) == CurrentAction.RETREAT)
+            if ((actionType & CurrentAction.RETREAT) == CurrentAction.RETREAT)
             {
+                Debug.Log("retreat");
                 avoidPlayer();
             }
         }
 
         //post logic----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
+        Debug.Log(machineGun.AmmoReserve.ToString());
+        Debug.Log(myShip.GetHP());
 
 
 
@@ -291,9 +297,9 @@ public class EnemyAI : MonoBehaviour
 
     void idle()//Stops the enemy from moving in any meaningful direction.
     {
-        Vector3 relativePos = target.position - new Vector3(Random.Range(-2,2), Random.Range(-2, 2), Random.Range(-2, 2));//picks a random direction
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, homingSensitivity);//the main bit of tracking.
+       // Vector3 relativePos = target.position - new Vector3(Random.Range(-2,2), Random.Range(-2, 2), Random.Range(-2, 2));//picks a random direction
+        //Quaternion rotation = Quaternion.LookRotation(relativePos);
+        transform.right = Vector3.Slerp(transform.right, target.position - new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), Random.Range(-2, 2)), homingSensitivity);//the main bit of tracking.
 
         myRig.AddRelativeForce(new Vector3(0, 0, speed * 0.2f) * Time.deltaTime);//This uses rigidbody and looks more real. Best setting for drag and mass is 0.5(drag) to 1(mass)//This version reduces speed to a little less than 1/2.
         //transform.Translate(0, 0, speed * Time.deltaTime, Space.Self);//This option does not use rigidbody but is far more accurate
@@ -301,21 +307,33 @@ public class EnemyAI : MonoBehaviour
 
     void approachPlayer()
     {
-        Vector3 relativePos = target.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, homingSensitivity);//the main bit of tracking.
+        //Vector3 relativePos = target.position - transform.position;
+        //Quaternion rotation = Quaternion.LookRotation(relativePos);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, homingSensitivity);//the main bit of tracking.
 
-        myRig.AddRelativeForce(new Vector3(0, 0, speed) * Time.deltaTime);//This uses rigidbody and looks more real. Best setting for drag and mass is 0.5(drag) to 1(mass)
+        //myRig.AddRelativeForce(new Vector3(0, 0, speed) * Time.deltaTime);//This uses rigidbody and looks more real. Best setting for drag and mass is 0.5(drag) to 1(mass)
+
+
+
+        transform.right = Vector3.Slerp(transform.right, target.transform.position - transform.position, homingSensitivity);
+
+
+        myRig.AddRelativeForce((transform.right * speed) * Time.deltaTime);//This uses rigidbody and looks more real. Best setting for drag and mass is 0.5(drag) to 1(mass)
+                                                                               //transform.Translate(0, 0, speed * Time.deltaTime, Space.Self);//This option does not use rigidbody but is far more accurate
+        
+
+
         //transform.Translate(0, 0, speed * Time.deltaTime, Space.Self);//This option does not use rigidbody but is far more accurate
     }
 
     void avoidPlayer()
     {
-        Vector3 relativePos = transform.position - target.position;//opposite of the approachPlayer function
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, homingSensitivity * 0.5f);//the main bit of tracking.
+       // Vector3 relativePos = transform.position - target.position;//opposite of the approachPlayer function
+        //Quaternion rotation = Quaternion.LookRotation(relativePos);
+        transform.right = Vector3.Slerp(transform.right, transform.position - target.position, homingSensitivity * 0.5f);//the main bit of tracking.
 
-        myRig.AddRelativeForce(new Vector3(0, 0, speed) * Time.deltaTime);//This uses rigidbody and looks more real. Best setting for drag and mass is 0.5(drag) to 1(mass)
+        myRig.AddRelativeForce((transform.right * speed) * Time.deltaTime);
+        //myRig.AddRelativeForce(new Vector3(0, 0, speed) * Time.deltaTime);//This uses rigidbody and looks more real. Best setting for drag and mass is 0.5(drag) to 1(mass)
         //transform.Translate(0, 0, speed * Time.deltaTime, Space.Self);//This option does not use rigidbody but is far more accurate
     }
 
@@ -324,7 +342,7 @@ public class EnemyAI : MonoBehaviour
         switch (attackActionType)
         {
             case AttackType.MachineGun:
-                
+                //Debug.Log("Fireing Point Defense");
                 machineGun.Fire();
                 machineGun2.Fire();
                 machineGun3.Fire();
