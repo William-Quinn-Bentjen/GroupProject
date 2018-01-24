@@ -171,19 +171,19 @@ public class EnemyAI : MonoBehaviour
 
                     if (distfromTarg < minDist)
                     {
-                        actionType = actionType = actionType | CurrentAction.RETREAT;
+                        actionType = actionType | CurrentAction.RETREAT;
                         actionType = actionType & ~CurrentAction.ADVANCE;
                     }
 
                     if ((railGun.AmmoReserve > 0 && distfromTarg < 75))
                     {
-                        actionType = actionType = actionType | CurrentAction.RETREAT;
+                        actionType = actionType | CurrentAction.RETREAT;
                         actionType = actionType & ~CurrentAction.ADVANCE;//0010  0010
                     }
 
                     if ((missile.AmmoReserve > 0) && distfromTarg < 400)
                     {
-                        actionType = actionType = actionType | CurrentAction.RETREAT;
+                        actionType = actionType | CurrentAction.RETREAT;
                         actionType = actionType & ~CurrentAction.ADVANCE;
                     }
 

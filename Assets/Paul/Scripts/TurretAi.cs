@@ -8,6 +8,8 @@ public class TurretAi : MonoBehaviour
     public float turretRange;
     Transform turret;
     Gun myGun;
+    
+
 
 
     public float reactionTime;
@@ -26,7 +28,7 @@ public class TurretAi : MonoBehaviour
         Collider[] neighbours = Physics.OverlapSphere(transform.position, turretRange);
         foreach (Collider obj in neighbours)
         {
-            if (obj.tag == "missile")
+            if (obj.tag == "Missile")
             {
                 return obj.gameObject;
             }
