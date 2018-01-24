@@ -62,12 +62,15 @@ public class ShipHealthBarUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     //sets value of bar
     public void RefreshValue()
     {
-        Bar.value = PlayerShip.GetHP();
+        Debug.Log(PlayerShip.GetHP() + "HP");
+        Bar.value = PlayerShip.GetComponent<Ship>().GetHP();
+        Debug.Log(PlayerShip.GetHP() + "HP");
         FullCheck();
     }
 

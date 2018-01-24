@@ -27,6 +27,7 @@ public class Ship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 	}
     //used internally to make sure a value is between 0 and 1
     private float ThrottleValueCheck(float value)

@@ -132,19 +132,21 @@ public class HealthBarUI : MonoBehaviour {
         {
             Bar.value = Bar.maxValue;
             OnFull.Invoke();
+            OnChange.Invoke();
         }
         else if (newValue <= Bar.minValue)
         {
             Bar.value = Bar.minValue;
             OnEmpty.Invoke();
+            OnChange.Invoke();
         }
         else
         {
             if (lastValue != newValue)
             {
                 Bar.value = newValue;
-                OnChange.Invoke();
                 FullCheck();
+                OnChange.Invoke();
             }
         }
     }
