@@ -60,7 +60,7 @@ public class EnemyAI : MonoBehaviour
         myCol = GetComponent<Collider>();
 
         //Select Ai mode!
-        int temp = Random.Range(-5, 5);
+        int temp = Random.Range(1, 5);
         if (temp > 0)
         {
             mood = AImode.Agressive;
@@ -109,7 +109,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(myShip.GetHP() + "HP");
         //AI refresh- Needed in order to keep the Ai from getting confused
         actionType = CurrentAction.IDLE;
 
@@ -197,7 +197,7 @@ public class EnemyAI : MonoBehaviour
             else
             {
                 Debug.Log("Better decision made");
-                if (myShip.GetHP() > myShip.GetMaxHP() / 4)
+                if (myShip.GetHP() > myShip.GetMaxHP() / 6)
                 {
                     
                     actionType = actionType | CurrentAction.ADVANCE;

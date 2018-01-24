@@ -74,6 +74,8 @@ public class Gun : MonoBehaviour {
             InMag--;
             ReadyToFireTime = -1 / (FireRPM / 60);
             OnFire.Invoke();
+
+
             if (InMag <= 0)
             {
                 OnEmptyMag.Invoke();
