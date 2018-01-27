@@ -60,7 +60,7 @@ public class EnemyAI : MonoBehaviour
         myCol = GetComponent<Collider>();
 
         //Select Ai mode!
-        int temp = Random.Range(1, 5);
+        int temp = Random.Range(1, 5);//Problem with Reserved mode occured. Had to set this value so that it would always be more than 0. Any value less than 0 will result in the reserved behavior type.
         if (temp > 0)
         {
             mood = AImode.Agressive;
